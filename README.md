@@ -1,2 +1,2 @@
-# FFT
-DIT FFT algorithm implementation
+# FFT and IFFT
+DIT FFT and IFFT algorithm implementation
