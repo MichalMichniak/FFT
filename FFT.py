@@ -84,33 +84,35 @@ def IFFT(x: List[float])->List[complex]:
         lst[n] = np.real(i/N)
     return lst
 
-k = 10
-FS = 100.0
-x = [1 if i*(1/FS)%10 > 10 else 0 for i in range(2**k)]
-x = [np.sin(2*np.pi*2*i*(1/FS)) for i in range(2**k)]
-#plt.plot(x)
-#plt.show()
-y = FFT(x)
-y1 = IFFT(y)
-plt.title("IFFT(FFT)")
-plt.plot(np.array(y1)-np.array(x))
-plt.show()
-df = np.array([i*FS/len(x) for i in range(len(x)//2)])
-fig,ax = plt.subplots(3,1)
-fig.set_size_inches([10,10])
-ax[1].set_title("FFT")
-ax[0].set_title("signal")
-ax[0].plot([i/FS for i in range(len(x))],x)
-ax[2].set_title("FFT numpy")
-ax[1].plot(df,abs(np.array(y)[:len(y)//2]))
-ax[2].plot(df,abs(np.fft.fft(x)[:len(x)//2]))
-#plt.plot(np.real(y),np.imag(y))
-plt.show()
-fig,ax = plt.subplots(2,1)
-fig.set_size_inches([10,10])
-ax[0].set_title("FFT")
-ax[1].set_title("FFT numpy")
-ax[0].plot(np.real(np.array(y)),np.imag(np.array(y)))
-ax[1].plot(np.real(np.fft.fft(x)),np.imag(np.fft.fft(x)))
-#plt.plot(np.real(y),np.imag(y))
-plt.show()
+
+if __name__ == "__main__":
+    k = 10
+    FS = 100.0
+    x = [1 if i*(1/FS)%10 > 10 else 0 for i in range(2**k)]
+    x = [np.sin(2*np.pi*2*i*(1/FS)) for i in range(2**k)]
+    #plt.plot(x)
+    #plt.show()
+    y = FFT(x)
+    y1 = IFFT(y)
+    plt.title("IFFT(FFT)")
+    plt.plot(np.array(y1)-np.array(x))
+    plt.show()
+    df = np.array([i*FS/len(x) for i in range(len(x)//2)])
+    fig,ax = plt.subplots(3,1)
+    fig.set_size_inches([10,10])
+    ax[1].set_title("FFT")
+    ax[0].set_title("signal")
+    ax[0].plot([i/FS for i in range(len(x))],x)
+    ax[2].set_title("FFT numpy")
+    ax[1].plot(df,abs(np.array(y)[:len(y)//2]))
+    ax[2].plot(df,abs(np.fft.fft(x)[:len(x)//2]))
+    #plt.plot(np.real(y),np.imag(y))
+    plt.show()
+    fig,ax = plt.subplots(2,1)
+    fig.set_size_inches([10,10])
+    ax[0].set_title("FFT")
+    ax[1].set_title("FFT numpy")
+    ax[0].plot(np.real(np.array(y)),np.imag(np.array(y)))
+    ax[1].plot(np.real(np.fft.fft(x)),np.imag(np.fft.fft(x)))
+    #plt.plot(np.real(y),np.imag(y))
+    plt.show()
